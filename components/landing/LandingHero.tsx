@@ -37,6 +37,7 @@ export default function LandingHero() {
         <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs text-white/80">
           <FlaskConical size={14} aria-hidden /> Problem Statement 1: Reverse-Engineered Career Roadmapper
         </p>
+        <p className="mt-6 text-xs font-bold uppercase tracking-[0.3em] text-forge-300">Reverse-engineer your dream career</p>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
           Turn Your Dream Job Into a Career Roadmap
         </h1>
@@ -58,6 +59,23 @@ export default function LandingHero() {
           </Link>
         </div>
         <p className="mt-4 text-xs text-white/50">AI-generated career guidance — review suggestions critically.</p>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur" aria-hidden>
+          <svg viewBox="0 0 600 190" className="h-auto w-full" role="img" aria-label="Preview of an AI career skill tree">
+            <line x1="300" y1="38" x2="150" y2="95" stroke="#617ff6" strokeWidth="2" className="edge-flow" />
+            <line x1="300" y1="38" x2="450" y2="95" stroke="#617ff6" strokeWidth="2" className="edge-flow" />
+            <line x1="150" y1="125" x2="300" y2="168" stroke="#34d399" strokeWidth="2" className="edge-flow" />
+            <line x1="450" y1="125" x2="300" y2="168" stroke="#34d399" strokeWidth="2" className="edge-flow" />
+            <rect x="210" y="8" width="180" height="30" rx="15" fill="#3f57ef" />
+            <text x="300" y="28" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="bold">Dream Job</text>
+            <rect x="70" y="95" width="160" height="30" rx="15" fill="#1e293b" stroke="#617ff6" />
+            <text x="150" y="115" textAnchor="middle" fill="#cbd5e1" fontSize="12">Foundations ✓</text>
+            <rect x="370" y="95" width="160" height="30" rx="15" fill="#1e293b" stroke="#617ff6" />
+            <text x="450" y="115" textAnchor="middle" fill="#cbd5e1" fontSize="12">Core Skills →</text>
+            <rect x="205" y="152" width="190" height="30" rx="15" fill="#059669" />
+            <text x="300" y="172" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="bold">Target Role</text>
+          </svg>
+        </div>
 
         <section aria-label="How it works" className="mt-14 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s) => (

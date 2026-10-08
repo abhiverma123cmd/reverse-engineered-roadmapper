@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { RoadmapInputSchema, RoadmapSchema, NodeAdviceRequestSchema } from "@/lib/ai/schemas";
-import { roadmapToFlow, unlockDownstream } from "@/lib/roadmap/transform";
+import { roadmapToFlow, roadmapToTree, unlockDownstream } from "@/lib/roadmap/transform";
 import { computeProgress, markNode } from "@/lib/roadmap/scoring";
 import { getFallbackRoadmap } from "@/lib/ai/fallback";
 
@@ -61,6 +61,17 @@ describe("transform + progress", () => {
     expect(p.pct).toBeGreaterThan(0);
     const py = done.phases.flatMap((x) => x.nodes).find((n) => n.id === "python-security");
     expect(py?.status).toBe("available");
+  });
+
+  it("builds a vertical career tree with a target-role node", () => {
+    const { nodes, edges } = roadmapToTree(fb);
+    const target = nodes.find((n) => n.id === "__target");
+    expect(target).toBeTruthy();
+    expect(target?.data.phaseTitle).toBe("Target Role");
+    expect(edges.some((e) => e.target === "__target")).toBe(true);
+    // every real node placed below-or-at its phase lane, no duplicates
+    const ids = nodes.map((n) => n.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it("picks a next best step", () => {

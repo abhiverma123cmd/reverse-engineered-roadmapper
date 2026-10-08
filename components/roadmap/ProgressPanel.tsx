@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import type { Roadmap } from "@/types/roadmap";
 import { computeProgress } from "@/lib/roadmap/scoring";
 
-export default function ProgressPanel({ roadmap }: { roadmap: Roadmap }) {
+export default function ProgressPanel({ roadmap, onContinue }: { roadmap: Roadmap; onContinue?: () => void }) {
   const p = useMemo(() => computeProgress(roadmap), [roadmap]);
   return (
     <section aria-label="Career progress" className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -24,6 +24,14 @@ export default function ProgressPanel({ roadmap }: { roadmap: Roadmap }) {
           <p className="mt-1 text-sm font-semibold">{p.nextBest.title}</p>
           <p className="text-xs text-slate-600">Estimated: {p.nextBest.estimatedHours} hours</p>
           <p className="mt-1 text-xs text-slate-600">Why: {p.nextReason}</p>
+          {onContinue && (
+            <button
+              onClick={onContinue}
+              className="focus-ring mt-2 w-full rounded-xl bg-forge-600 px-4 py-2 text-sm font-bold text-white hover:bg-forge-500"
+            >
+              Continue →
+            </button>
+          )}
         </div>
       )}
       {roadmap.intermediateRoles.length > 0 && (

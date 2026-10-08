@@ -23,3 +23,20 @@ body {
   outline: 2px solid #2b3fe3;
   outline-offset: 2px;
 }
+
+@keyframes forge-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.edge-flow {
+  stroke-dasharray: 6 6;
+  animation: forge-dash 1.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge-flow {
+    animation: none;
+  }
+}
